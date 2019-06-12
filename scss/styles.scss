@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
 @import 'normalize';
 @import 'mixins';
+
+$light-text:#fbfbfb;
+$dark-text: #b7bacd;
+$badge-color:#fedc3f;
 
 * {
 	box-sizing: border-box;
@@ -11,9 +17,190 @@ html {
 }
 
 body {
-	/* font-family: ''; */
+	font-family: 'Lato',sans-serif;
 	font-size: 1.8rem;
 	line-height: 1.6;
 	color: #333;
 	min-height: 100%;
+	position: relative;
+	background-color: #292d3e;
+	background-image: url(../img/bg-main.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-origin: content-box;
 }
+
+
+
+.card{
+	width: 100%;
+	max-width: 600px;
+	min-height: 540px;
+
+	@include myPos();
+	background-color: #212534;
+	box-shadow: 0px 6px 14px 2px rgba(0, 0, 0, 0.8);
+	display: flex;
+	flex-direction: column;
+}
+
+.card-tabs{
+	padding: 0;
+	margin: 0;
+//   flex-basis: 10%;
+  background-color: #2b3040;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  &__item{
+	  list-style: none;
+	}
+  &__link{
+	  padding: 30px 18px 36px 18px;
+	  text-decoration: none;
+	  text-align: center;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  color: $dark-text;
+	  text-transform: uppercase;
+	  font-size: 1.6rem;
+	  line-height: 1;
+	  font-weight: 400;
+	   border-bottom: 2px solid transparent;
+	   @include tr(all);
+
+	   &:hover,
+	   &:focus,
+	   &.active {
+	   	border-color: $light-text;
+		color: $light-text;
+	   }
+
+
+  }
+  &__icon{
+	  margin-bottom: 10px;
+	  	& path {
+	  		fill: currentColor;
+	  	}
+  }
+}
+
+.card-content{
+    padding: 60px 40px 63px 40px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	color: $light-text;
+	position: relative;
+	&__gallery{
+		flex-basis: 30%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	&__img{
+		
+		max-width: 100%;
+		margin-bottom: 25px;
+	}
+	&__stars{
+		padding: 0;
+		margin: 0;
+		display: inline-block;
+	}
+
+	&__stars-item{
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ3Ljk0IDQ3Ljk0IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0Ny45NCA0Ny45NDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSI1MTJweCIgaGVpZ2h0PSI1MTJweCI+CjxwYXRoIHN0eWxlPSJmaWxsOiNFRDhBMTk7IiBkPSJNMjYuMjg1LDIuNDg2bDUuNDA3LDEwLjk1NmMwLjM3NiwwLjc2MiwxLjEwMywxLjI5LDEuOTQ0LDEuNDEybDEyLjA5MSwxLjc1NyAgYzIuMTE4LDAuMzA4LDIuOTYzLDIuOTEsMS40MzEsNC40MDNsLTguNzQ5LDguNTI4Yy0wLjYwOCwwLjU5My0wLjg4NiwxLjQ0OC0wLjc0MiwyLjI4NWwyLjA2NSwxMi4wNDIgIGMwLjM2MiwyLjEwOS0xLjg1MiwzLjcxNy0zLjc0NiwyLjcyMmwtMTAuODE0LTUuNjg1Yy0wLjc1Mi0wLjM5NS0xLjY1MS0wLjM5NS0yLjQwMywwbC0xMC44MTQsNS42ODUgIGMtMS44OTQsMC45OTYtNC4xMDgtMC42MTMtMy43NDYtMi43MjJsMi4wNjUtMTIuMDQyYzAuMTQ0LTAuODM3LTAuMTM0LTEuNjkyLTAuNzQyLTIuMjg1bC04Ljc0OS04LjUyOCAgYy0xLjUzMi0xLjQ5NC0wLjY4Ny00LjA5NiwxLjQzMS00LjQwM2wxMi4wOTEtMS43NTdjMC44NDEtMC4xMjIsMS41NjgtMC42NSwxLjk0NC0xLjQxMmw1LjQwNy0xMC45NTYgIEMyMi42MDIsMC41NjcsMjUuMzM4LDAuNTY3LDI2LjI4NSwyLjQ4NnoiLz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPGc+CjwvZz4KPC9zdmc+Cg==);
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+
+	}
+	&__description{
+		flex-basis: 59%;
+		font-size: 1.4rem;
+
+	}
+	&__title{
+		font-size: 3.2rem;
+		font-weight: 400;
+		line-height: 1;
+		margin: 9px 0 12px;
+	}
+	&__date{
+		margin-bottom: 25px;
+	}
+	&__about{
+		text-align: left;
+		margin-bottom: 60px;
+		color: $dark-text;
+	}
+
+	&__price{
+		display: flex;
+		flex-direction: row;
+		align-items: flex-end;
+		justify-content: space-between;
+
+		}
+	&__price-wrap{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+	}	
+	&__price-badge{
+		font-size: 1.2rem;
+		font-weight: bold;
+		color: #fedc3f;
+		margin-bottom: 10px;
+	}
+	&__price-tag{
+		font-size: 3.2rem;
+		line-height: 1;
+	}
+	&__price-button{
+		width: 164px;
+		text-align: center;
+		text-decoration: none;
+		font-weight: bold;
+		color: $light-text;
+		padding: 20px 35px 20px;
+		border-radius:3px;
+		background-color: #13e28d;
+		@include tr(all);
+		&:hover,
+		&:focus,
+		&:active {
+			color: #13e28d;
+			background-color:$light-text;
+		}
+		
+	}
+
+	}
+
+
+[data-stars="0"] .card-content__stars-item:nth-child(n + 1),
+[data-stars="1"] .card-content__stars-item:nth-child(n + 2),
+[data-stars="2"] .card-content__stars-item:nth-child(n + 3),
+[data-stars="3"] .card-content__stars-item:nth-child(n + 4),
+[data-stars="4"] .card-content__stars-item:nth-child(n + 5) 
+{
+background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDcuOTQgNDcuOTQiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ3Ljk0IDQ3Ljk0OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiPjxnPjxwYXRoIHN0eWxlPSJmaWxsOiM0QjUzNkIiIGQ9Ik0yNi4yODUsMi40ODZsNS40MDcsMTAuOTU2YzAuMzc2LDAuNzYyLDEuMTAzLDEuMjksMS45NDQsMS40MTJsMTIuMDkxLDEuNzU3ICBjMi4xMTgsMC4zMDgsMi45NjMsMi45MSwxLjQzMSw0LjQwM2wtOC43NDksOC41MjhjLTAuNjA4LDAuNTkzLTAuODg2LDEuNDQ4LTAuNzQyLDIuMjg1bDIuMDY1LDEyLjA0MiAgYzAuMzYyLDIuMTA5LTEuODUyLDMuNzE3LTMuNzQ2LDIuNzIybC0xMC44MTQtNS42ODVjLTAuNzUyLTAuMzk1LTEuNjUxLTAuMzk1LTIuNDAzLDBsLTEwLjgxNCw1LjY4NSAgYy0xLjg5NCwwLjk5Ni00LjEwOC0wLjYxMy0zLjc0Ni0yLjcyMmwyLjA2NS0xMi4wNDJjMC4xNDQtMC44MzctMC4xMzQtMS42OTItMC43NDItMi4yODVsLTguNzQ5LTguNTI4ICBjLTEuNTMyLTEuNDk0LTAuNjg3LTQuMDk2LDEuNDMxLTQuNDAzbDEyLjA5MS0xLjc1N2MwLjg0MS0wLjEyMiwxLjU2OC0wLjY1LDEuOTQ0LTEuNDEybDUuNDA3LTEwLjk1NiAgQzIyLjYwMiwwLjU2NywyNS4zMzgsMC41NjcsMjYuMjg1LDIuNDg2eiIgZGF0YS1vcmlnaW5hbD0iI0VEOEExOSIgY2xhc3M9ImFjdGl2ZS1wYXRoIiBkYXRhLW9sZF9jb2xvcj0iIzRiNTM2YiI+PC9wYXRoPjwvZz4gPC9zdmc+);
+}
+
+
+
+	
+
+
+
+
